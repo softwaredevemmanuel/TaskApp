@@ -1,43 +1,27 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Login from './components/Login'
+import Register from './components/Register'
+import Home from './components/Home'
+import Index from './components/Index'
 
 
-function App() {
-  const [data, setData] = useState([])
-  useEffect(() => {
-    async function fetchContent() {
-        try {
-          const response = await axios.get('http://localhost:5000/movies', {
-          
-          });
-          setData(response.data)
-           
-  
-        } catch (error) {
-     
-        }
-      }
-
-      fetchContent();
-  }, []);
-  console.log(data)
-
-
+const App = () => {
   return (
     <div>
-      <h1>HELLO</h1>
-      { data.map((items,id)=>{
-              return(
-                   <div key={id}>
-                      <h4 >{items.movie} </h4>
-                   </div>
-              )
-         })
-        }
-
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
+          <Route path="/home" element={<Home />}/>
+          <Route path="/index" element={<Index />}/>
+        </Routes>
+      
+      </BrowserRouter>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
