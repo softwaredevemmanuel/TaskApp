@@ -17,6 +17,9 @@ const Register = () => {
                 <br />
                 <h1>Password</h1>
                 <input placeholder='Password' />
+                <br />
+                <h1>Confirm Password</h1>
+                <input placeholder='Confirm Password' />
             </form>
 
 
