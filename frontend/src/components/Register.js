@@ -20,10 +20,12 @@ const Register = () => {
                 <br />
                 <h1>Confirm Password</h1>
                 <input placeholder='Confirm Password' />
+                <br/>
+                <button type="submit">Submit</button>
             </form>
 
 
-            Have an account? <Link to='/login'>Login Here</Link>
+            Have an account? <Link to='/'>Login Here</Link>
         </div>
     )
 }
