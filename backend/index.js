@@ -51,21 +51,25 @@ app.get("/movies", function (req, res) {
     ]);
 });
 
-app.post('/login', function (req, res) {
+app.post('/login', async (req, res) => {
   const {email, password} = req.body
-  studentEmail = "admin@gmail.com"
-  studentPassword = "1234"
-  if (email == studentEmail && password == studentPassword){
-    res.send('Logged in successfully')
-    }else{
-      res.send('Wrong Email or password')
-    }
-  
-})
+  const user =  await Student.findOne({email})
+  console.log(user)
+ 
+ if(email == user.email && password == user.password){
+ 
+   console.log("Logged in Successfully")
+   res.send({message:'Logged in Successfully', user : user})
+ }else{
+   console.log("Wrong Credentials!")
+   return res.status(400).json({error:'Wrong Credentials!'})
+ 
+ }
+ })
 
 
 app.post('/register', async (req, res) => {
-  const {first_name, last_name, email, passwords} = req.body
+  const {first_name, last_name, email, password} = req.body
 
   const user = await Student.findOne({email})
   if(user){
@@ -73,19 +77,22 @@ app.post('/register', async (req, res) => {
    return res.status(400).json({error:'User Exists!'})
  
  }
-
+ 
   const newUser = new Student({
     firstName: first_name,
     lastName : last_name,
     email: email,
-    password: passwords
+    password: password
    
   });
 
+
   newUser.save()
+  console.log("Registration Successful")
   return res.status(200).json({message : "Registration Successful"})
 
  })
+
 
 
 app.listen(5000, () => {
