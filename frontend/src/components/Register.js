@@ -12,50 +12,50 @@ const Register = () => {
     const [success, setSuccess] = useState('');
 
 
-    // function registerUser(){
-    //     if (firstName && lastName && email && password) {
-    //       axios.post('http://localhost:5000/register', {
-    //         first_name : firstName,
-    //         last_name : lastName,  
-    //         email: email,
-    //         password: password,
-    //       })
-    //       .then(response => {
-    //         console.log("Registration Successful")
-    //         setSuccess("Registration Successful")
-    //       })
-    //       .catch(error => {
-    //         console.log("User Exists")
-    //         setError("User Exists")
+    function registerUser(){
+        if (firstName && lastName && email && password) {
+          axios.post('http://localhost:5000/register', {
+            first_name : firstName,
+            last_name : lastName,  
+            email: email,
+            password: password,
+          })
+          .then(response => {
+            console.log("Registration Successful")
+            setSuccess("Registration Successful")
+          })
+          .catch(error => {
+            console.log("User Exists")
+            setError("User Exists")
 
     
-    //       });
-    //     }else {
-    //       alert("enter your credentials")
+          });
+        }else {
+          alert("enter your credentials")
     
-    //     }
-    //   }
+        }
+      }
 
-    const registerUser = () => {
-        fetch(`http://localhost:5000/register`, {
-            method: 'POST',
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                password: password,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Registration Successful");
-            setSuccess("Registration Successful");
-        })
-        .catch(error => {
-            console.log("User Exists");
-            setError("User Exists");
-        });
-    };
+    // const registerUser = () => {
+    //     fetch(`http://localhost:5000/register`, {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             first_name: firstName,
+    //             last_name: lastName,
+    //             email: email,
+    //             password: password,
+    //         }),
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log("Registration Successful");
+    //         setSuccess("Registration Successful");
+    //     })
+    //     .catch(error => {
+    //         console.log("User Exists");
+    //         setError("User Exists");
+    //     });
+    // };
     
 
       const handleSubmit = (event) => {

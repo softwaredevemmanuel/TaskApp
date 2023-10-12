@@ -53,9 +53,11 @@ app.get("/movies", function (req, res) {
 
 app.post('/login', async (req, res) => {
   const {email, password} = req.body
+  console.log(email)
   const user =  await Student.findOne({email})
   console.log(user)
  
+
  if(email == user.email && password == user.password){
  
    console.log("Logged in Successfully")
@@ -70,6 +72,8 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
   const {first_name, last_name, email, password} = req.body
+  console.log(first_name)
+
 
   const user = await Student.findOne({email})
   if(user){
