@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Login from './components/Login'
-import Register from './components/Register'
 import Home from './components/Home'
-import Index from './components/Index'
+import RegisteredVoters from './components/RegisteredVoters';
+import VoteResult from './components/VoterResult';
+import Candidates from './components/Candidates';
 
 
 const App = () => {
@@ -12,10 +12,10 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />}/>
-          <Route path="/register" element={<Register />}/>
-          <Route path="/home" element={<Home />}/>
-          <Route path="/index" element={<Index />}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/registered-voters" element={<RegisteredVoters />}/>
+          <Route path="/vote-result" element={<VoteResult />}/>
+          <Route path="/candidates" element={<Candidates />}/>
         </Routes>
       
       </BrowserRouter>
