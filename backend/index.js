@@ -37,6 +37,48 @@ app.get('/', function (req, res) {
 
   })
 
+  app.get('/vote-result', function (req, res) {
+
+    db.query('SELECT * FROM voteresults', async (err, result) => {
+      
+      console.log(result)
+  
+      return res.json({ message: result });
+  
+    })
+  
+    })
+
+
+    
+  app.get('/candidates', function (req, res) {
+
+    const emma = req.headers.fullstack
+    console.log(emma)
+
+    db.query('SELECT * FROM Candidates WHERE Department = ?',[emma], async (err, result) => {
+      
+  
+      return res.json({ message: result });
+  
+    })
+  
+    })
+
+       
+  app.get('/manifesto', function (req, res) {
+
+    const email = req.headers.email
+
+    db.query('SELECT * FROM Candidates WHERE Email = ?',[email], async (err, result) => {
+      
+  
+      return res.json({ message: result });
+  
+    })
+  
+    })
+
 
 app.listen(5000, () => {
     console.log(`Server is running on port 5000`);

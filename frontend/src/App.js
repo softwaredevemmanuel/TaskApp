@@ -5,6 +5,7 @@ import Home from './components/Home'
 import RegisteredVoters from './components/RegisteredVoters';
 import VoteResult from './components/VoterResult';
 import Candidates from './components/Candidates';
+import Details from './components/Details';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/registered-voters" element={<RegisteredVoters />}/>
           <Route path="/vote-result" element={<VoteResult />}/>
           <Route path="/candidates" element={<Candidates />}/>
+          <Route path="/candidates/:email" element={<Details />}/>
         </Routes>
       
       </BrowserRouter>
