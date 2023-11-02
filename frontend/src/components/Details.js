@@ -34,7 +34,7 @@ const Details = () => {
     <div>
         <h1>Details</h1>
 
-        {/* { data.map((items,id)=>{
+        { data.map((items,id)=>{
               return(
                    <div key={id}>
                     
@@ -46,7 +46,7 @@ const Details = () => {
                    </div>
               )
          })
-        } */}
+        }
     </div>
   )
 }

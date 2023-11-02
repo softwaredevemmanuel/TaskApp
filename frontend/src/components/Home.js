@@ -15,6 +15,9 @@ const Home = () => {
       <Link to='/candidates'> View Candidates</Link>
       <br/>
       <br/>
+      <Link to='/vote-analysis'> Vote Analysis</Link>
+      <br/>
+      <br/>
     </div>
   )
 }

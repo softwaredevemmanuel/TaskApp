@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import axios from 'axios';
 
@@ -11,49 +11,47 @@ const Candidates = () => {
     useEffect(() => {
         console.log(department)
 
-      async function fetchContent() {
-          try {
-            const response = await axios.get('http://localhost:5000/candidates',{
-                headers:{
-                    fullstack : department
-                }
-            });
-            setData(response.data.message)
+        async function fetchContent() {
+            try {
+                const response = await axios.get('http://localhost:5000/candidates', {
+                    headers: {
+                        fullstack: department
+                    }
+                });
+                setData(response.data.message)
 
-          } catch (error) {
-       
-          }
+            } catch (error) {
+
+            }
         }
-  
+
         fetchContent();
     }, [department]);
     console.log(department)
 
-   
 
-      async function createStudent() {
-          try {
-            const response = await axios.get('http://localhost:5000/candidates',{
-                headers:{
-                    fullstack : department
+
+    async function createStudent() {
+        try {
+            const response = await axios.get('http://localhost:5000/candidates', {
+                headers: {
+                    fullstack: department
                 }
             });
             setData(response.data.message)
 
-          } catch (error) {
-       
-          }
+        } catch (error) {
+
         }
-  
+    }
 
-
-    
 
     const handleSubmit = (event) => {
         event.preventDefault();
         createStudent();
-      };
-    
+    };
+
+
     return (
         <div>
             <h2>Candidates Contesting For Position</h2>
@@ -67,38 +65,48 @@ const Candidates = () => {
                 <option value='BioChemistry'>BioChemistry</option>
 
             </select>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
 
 
             <form onSubmit={handleSubmit}>
-            <select
-                value={department}
-                onChange={(event) => setDepartment(event.target.value)}
-            >
-                <option value=''></option>
-                <option value='Chemistry'>Chemistry</option>
-                <option value='Chemical Engineering'>Chemical Engineering</option>
+                <select
+                    value={department}
+                    onChange={(event) => setDepartment(event.target.value)}
+                >
+                    <option value=''></option>
+                    <option value='Chemistry'>Chemistry</option>
+                    <option value='Chemical Engineering'>Chemical Engineering</option>
 
-            </select>
-            <button> Submit</button>
+                </select>
+                <button> Submit</button>
             </form>
 
-            { data.map((items,id)=>{
-              return(
-                   <div key={id}>
-                    
-                      <h4 >{items.Department} </h4>
-                      <h4 >{items.FirstName} </h4>
-                      <h4 >{items.LastName} </h4>
-                      <h4 >{items.Email} </h4>
-                      {/* <Link to={`/candidates/${items.Email}`}>Manifesto</Link> */}
-                      <hr/>
-                   </div>
-              )
-         })
-        }
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Position</th>
+                        <th>View More</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                                <td>{item.FirstName}</td>
+                                <td>{item.LastName}</td>
+                                <td>{item.Position}</td>    
+
+                                <td> <Link to={`/candidates/${item.Email}`}>More Details </Link></td>                                
+
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
 
         </div>
     )

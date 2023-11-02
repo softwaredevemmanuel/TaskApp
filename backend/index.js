@@ -65,6 +65,33 @@ app.get('/', function (req, res) {
   
     })
 
+
+    app.get('/positions', function (req, res) {
+  
+      db.query('SELECT * FROM Candidates',  async (err, result) => {
+        
+    
+        return res.json({ message: result });
+    
+      })
+    
+      })
+
+    
+      app.get('/posts', function (req, res) {
+
+        const emma = req.headers.fullstack
+        console.log(emma)
+    
+        db.query('SELECT * FROM voteresults WHERE Position = ?',[emma], async (err, result) => {
+          
+      
+          return res.json({ message: result });
+      
+        })
+      
+        })
+
        
   app.get('/manifesto', function (req, res) {
 
